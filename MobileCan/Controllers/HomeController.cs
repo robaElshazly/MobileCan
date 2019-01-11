@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MobileCan.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace MobileCan.Controllers
 {
     public class HomeController : Controller
     {
+        MobileCanEntities db = new MobileCanEntities();
         public ActionResult Index()
         {
             return View();
@@ -15,9 +17,9 @@ namespace MobileCan.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+           var info= db.CompanyInfoes.FirstOrDefault();
 
-            return View();
+            return View(info);
         }
 
         public ActionResult Contact()
