@@ -64,6 +64,9 @@
   <ItemGroup>
     <EmbeddedResource Include="scripts\20191101850-ceate-comoany-info.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="scripts\201919011737-update-phone-number.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
