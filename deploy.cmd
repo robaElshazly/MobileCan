@@ -73,6 +73,10 @@ IF /I "MobileCan.sln" NEQ "" (
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
+:: 2. Dbup
+call :ExecuteCmd "%MSBUILD_PATH%"  "%DEPLOYMENT_SOURCE%\MobileCan.Database\MobileCan.Database.csproj" /nologo /verbosity:m /t:Build /p:Configuration=Release
+call :ExecuteCmd "%DEPLOYMENT_SOURCE%\MobileCan.Database\bin\Release\MobileCan.Database.exe" "%SQLAZURECONNSTR_defaultConnection%"
+
 :: 2. Build to the temporary path
 IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   call :ExecuteCmd "%MSBUILD_PATH%" "%DEPLOYMENT_SOURCE%\MobileCan\MobileCan.csproj" /nologo /verbosity:m /t:Build /t:pipelinePreDeployCopyAllFilesToOneFolder /p:_PackageTempDir="%DEPLOYMENT_TEMP%";AutoParameterizationWebConfigConnectionStrings=false;Configuration=Release;UseSharedCompilation=false /p:SolutionDir="%DEPLOYMENT_SOURCE%\.\\" %SCM_BUILD_ARGS%
@@ -88,8 +92,7 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
-:: 4. Dbup
-call :ExecuteCmd "%DEPLOYMENT_TARGET%\MobileCan.Database\bin\Release\MobileCan.Database.exe" "%SQLAZURECONNSTR_defaultConnection%"
+
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
