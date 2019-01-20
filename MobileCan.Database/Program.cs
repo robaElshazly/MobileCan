@@ -14,7 +14,7 @@ namespace MobileCan.Database
         {
             var connectionString =
         args.FirstOrDefault()
-        ?? "Server=(local)\\SqlExpress; Database=MobileCan; Trusted_connection=true";
+        ?? "Server=.; Database=MobileCanDb; Trusted_connection=true";
 
             EnsureDatabase.For.SqlDatabase(connectionString);
 
