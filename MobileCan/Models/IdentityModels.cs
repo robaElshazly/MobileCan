@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using MobileCan.Migrations;
 
 namespace MobileCan.Models
 {
@@ -18,16 +19,21 @@ namespace MobileCan.Models
         }
     }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class AuthenticationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
+        public AuthenticationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
-        public static ApplicationDbContext Create()
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            return new ApplicationDbContext();
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AuthenticationDbContext, Configuration>());
+            base.OnModelCreating(modelBuilder);
+        }
+
+        public static AuthenticationDbContext Create()
+        {
+            return new AuthenticationDbContext();
         }
     }
 }

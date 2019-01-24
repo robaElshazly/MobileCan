@@ -21,10 +21,10 @@ namespace MobileCan.Controllers
 
             return View(info);
         }
-
+        [Authorize(Roles ="Admin")]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "You as admin you can see this page, others cannot";
 
             return View();
         }
