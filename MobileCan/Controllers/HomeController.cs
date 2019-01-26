@@ -12,7 +12,7 @@ namespace MobileCan.Controllers
         MobileCanEntities db = new MobileCanEntities();
         public ActionResult Index()
         {
-            return View();
+            return View(db.Categories);
         }
 
         public ActionResult About()
