@@ -1,0 +1,9 @@
+﻿@model IEnumerable<MobileCan.Models.Category>
+
+<div class="list-group">
+    @foreach (var category in Model)
+    {
+        <a href="#" class="list-group-item">@category.Name</a>
+    }
+
+</div>
