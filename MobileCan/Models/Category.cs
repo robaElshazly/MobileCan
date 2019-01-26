@@ -12,12 +12,13 @@ namespace MobileCan.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class CompanyInfo
+    public partial class Category
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Address { get; set; }
-        public string WorkingHours { get; set; }
-        public string Phone { get; set; }
+        public string CreatedBy { get; set; }
+        public Nullable<System.DateTime> CreatedOn { get; set; }
+        public string ModifiedBy { get; set; }
+        public Nullable<System.DateTime> ModifiedOn { get; set; }
     }
 }

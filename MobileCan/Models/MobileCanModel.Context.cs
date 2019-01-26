@@ -26,5 +26,6 @@ namespace MobileCan.Models
         }
     
         public virtual DbSet<CompanyInfo> CompanyInfoes { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
     }
 }

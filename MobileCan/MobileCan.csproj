@@ -209,6 +209,9 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Category.cs">
+      <DependentUpon>MobileCanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CompanyInfo.cs">
       <DependentUpon>MobileCanModel.tt</DependentUpon>
     </Compile>

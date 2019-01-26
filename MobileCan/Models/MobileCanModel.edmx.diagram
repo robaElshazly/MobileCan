@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a8e941ae321847c89871ae7daea217b3" Name="Diagram1">
         <EntityTypeShape EntityType="MobileCanModel.CompanyInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MobileCanModel.Category" Width="1.5" PointX="3.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
