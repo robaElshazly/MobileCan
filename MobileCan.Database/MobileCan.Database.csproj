@@ -70,6 +70,12 @@
   <ItemGroup>
     <EmbeddedResource Include="scripts\201926011147-create-category.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="scripts\201930011138-create-product.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="scripts\201930011254-insert-product.sql" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
