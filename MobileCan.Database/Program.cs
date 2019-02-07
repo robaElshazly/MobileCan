@@ -16,7 +16,7 @@ namespace MobileCan.Database
         args.FirstOrDefault()
         ?? "Server=(localdb)\\mssqllocaldb; Database=MobileCanDb; Trusted_connection=true";
 
-            EnsureDatabase.For.SqlDatabase(connectionString);
+            EnsureDatabase.For.SqlDatabase(connectionString, DbUp.SqlServer.AzureDatabaseEdition.Standard);
 
             var upgrader =
                 DeployChanges.To
