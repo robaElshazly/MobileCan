@@ -10,11 +10,19 @@ namespace MobileCan.Controllers
     public class HomeController : Controller
     {
         MobileCanEntities db = new MobileCanEntities();
-        public ActionResult Index()
+        public ActionResult Index(int? category)
         {
             var viewModel = new HomeViewModel();
             viewModel.Categories = db.Categories;
-            viewModel.Products = db.Products;
+
+            var filteredProducts = from product in db.Products.Include("Images")
+                                   where !category.HasValue || product.CategoryId == category.Value
+                                   select product;
+
+            viewModel.Products = filteredProducts
+                .ToList()
+                .Select(p=>ProductViewModel.Map(p));
+
             return View(viewModel);
         }
 

@@ -3,7 +3,6 @@
 <div class="list-group">
     @foreach (var category in Model)
     {
-        <a href="#" class="list-group-item">@category.Name</a>
+        @Html.ActionLink(linkText: category.Name, actionName: "Index", controllerName: "Home", routeValues: new { category = category.Id }, htmlAttributes: new { @class = "list-group-item" })
     }
-
 </div>

@@ -26,6 +26,14 @@
           <Property Name="WorkingHours" Type="nvarchar(max)" />
           <Property Name="Phone" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="400" />
+          <Property Name="ProductId" Type="int" />
+        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="ProductId" />
@@ -34,11 +42,24 @@
           <Property Name="CategoryId" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
           <Property Name="Price" Type="money" />
+          <Property Name="Rating" Type="float" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="200" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" />
           <Property Name="ModifiedOn" Type="datetime" />
         </EntityType>
+        <Association Name="FK__Image__ProductId__1CF15040">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Image" Type="Self.Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Product__Categor__182C9B23">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -54,7 +75,12 @@
         <EntityContainer Name="MobileCanModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyInfo" EntityType="Self.CompanyInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Image__ProductId__1CF15040" Association="Self.FK__Image__ProductId__1CF15040">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Image" EntitySet="Image" />
+          </AssociationSet>
           <AssociationSet Name="FK__Product__Categor__182C9B23" Association="Self.FK__Product__Categor__182C9B23">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
@@ -82,6 +108,11 @@
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
+          <EntitySet Name="Images" EntityType="MobileCanModel.Image" />
+          <AssociationSet Name="FK__Image__ProductId__1CF15040" Association="MobileCanModel.FK__Image__ProductId__1CF15040">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Image" EntitySet="Images" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -108,6 +139,8 @@
           <Property Name="ModifiedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Category" Relationship="MobileCanModel.FK__Product__Categor__182C9B23" FromRole="Product" ToRole="Category" />
+          <Property Name="Rating" Type="Double" />
+          <NavigationProperty Name="Images" Relationship="MobileCanModel.FK__Image__ProductId__1CF15040" FromRole="Product" ToRole="Image" />
         </EntityType>
         <Association Name="FK__Product__Categor__182C9B23">
           <End Type="MobileCanModel.Category" Role="Category" Multiplicity="1" />
@@ -118,6 +151,27 @@
             </Principal>
             <Dependent Role="Product">
               <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageUrl" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="Int32" />
+          <NavigationProperty Name="Product" Relationship="MobileCanModel.FK__Image__ProductId__1CF15040" FromRole="Image" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__Image__ProductId__1CF15040">
+          <End Type="MobileCanModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="MobileCanModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -153,6 +207,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="MobileCanModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
@@ -161,6 +216,15 @@
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="MobileCanModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

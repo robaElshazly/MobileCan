@@ -203,6 +203,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Extensions.cs" />
     <Compile Include="Migrations\201901221254397_InitialCreate.cs" />
     <Compile Include="Migrations\201901221254397_InitialCreate.Designer.cs">
       <DependentUpon>201901221254397_InitialCreate.cs</DependentUpon>
@@ -217,6 +218,9 @@
     </Compile>
     <Compile Include="Models\HomeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs">
+      <DependentUpon>MobileCanModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MobileCanModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -246,6 +250,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\headphone.jpg" />
+    <Content Include="images\htc.jpg" />
+    <Content Include="images\ipad.jpg" />
+    <Content Include="images\iphone-protector.jpg" />
+    <Content Include="images\iPhone-X.png" />
+    <Content Include="images\iphone8.jpg" />
+    <Content Include="images\iphonex.jpg" />
+    <Content Include="images\samsung-phone.jpg" />
+    <Content Include="images\samsung-tablet.jpg" />
+    <Content Include="images\samsung-watch.jpg" />
     <Content Include="Models\MobileCanModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MobileCanModel.edmx</DependentUpon>

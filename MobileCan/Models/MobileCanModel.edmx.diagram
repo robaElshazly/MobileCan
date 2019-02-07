@@ -4,11 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a8e941ae321847c89871ae7daea217b3" Name="Diagram1">
+      <Diagram DiagramId="a8e941ae321847c89871ae7daea217b3" Name="Diagram1" ZoomLevel="80">
         <EntityTypeShape EntityType="MobileCanModel.CompanyInfo" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="MobileCanModel.Category" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="MobileCanModel.Product" Width="1.5" PointX="5.625" PointY="5.375" />
+        <EntityTypeShape EntityType="MobileCanModel.Product" Width="1.5" PointX="5.875" PointY="1.375" />
         <AssociationConnector Association="MobileCanModel.FK__Product__Categor__182C9B23" />
+        <EntityTypeShape EntityType="MobileCanModel.Image" Width="1.5" PointX="8.125" PointY="2" />
+        <AssociationConnector Association="MobileCanModel.FK__Image__ProductId__1CF15040" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

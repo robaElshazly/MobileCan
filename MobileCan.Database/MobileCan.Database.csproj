@@ -59,19 +59,22 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="scripts\201919011416-insert-company-info.sql" />
+    <EmbeddedResource Include="scripts\201901191416-insert-company-info.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="scripts\20191101850-ceate-comoany-info.sql" />
+    <EmbeddedResource Include="scripts\20190111850-ceate-comoany-info.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="scripts\201919011737-update-phone-number.sql" />
+    <EmbeddedResource Include="scripts\201901191737-update-phone-number.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="scripts\201926011147-create-category.sql" />
+    <EmbeddedResource Include="scripts\201901261147-create-category.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="scripts\201930011138-create-product.sql" />
+    <EmbeddedResource Include="scripts\201901301138-create-product.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="scripts\201903020404-create-image.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
