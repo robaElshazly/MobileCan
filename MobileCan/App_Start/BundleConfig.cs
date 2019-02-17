@@ -23,9 +23,13 @@ namespace MobileCan
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/vendor").Include(
+                      "~/Scripts/smoothproducts.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/shop-homepage.css",
+                      "~/Content/smoothproducts.css"));
         }
     }
 }

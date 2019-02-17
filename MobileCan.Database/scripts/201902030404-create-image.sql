@@ -4,6 +4,7 @@ ImageUrl nvarchar(400),
 ProductId int FOREIGN KEY REFERENCES Product(ProductId)
 
 )
+GO
 insert into Image(ImageUrl, ProductId) values 
 ('/images/iphone8.jpg','2'),
 ('/images/iphonex.jpg','1'),

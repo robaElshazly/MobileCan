@@ -47,8 +47,18 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="ModifiedBy" Type="nvarchar" MaxLength="200" />
           <Property Name="ModifiedOn" Type="datetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" />
         </EntityType>
-        <Association Name="FK__Image__ProductId__1CF15040">
+        <EntityType Name="Reviews">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="25" />
+          <Property Name="Review" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK__Image__ProductId__4316F928">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Image" Type="Self.Image" Multiplicity="*" />
           <ReferentialConstraint>
@@ -60,7 +70,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Product__Categor__182C9B23">
+        <Association Name="FK__Product__Categor__3E52440B">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -72,18 +82,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Reviews__Product__45F365D3">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Reviews">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="MobileCanModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CompanyInfo" EntityType="Self.CompanyInfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Image__ProductId__1CF15040" Association="Self.FK__Image__ProductId__1CF15040">
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Image__ProductId__4316F928" Association="Self.FK__Image__ProductId__4316F928">
             <End Role="Product" EntitySet="Product" />
             <End Role="Image" EntitySet="Image" />
           </AssociationSet>
-          <AssociationSet Name="FK__Product__Categor__182C9B23" Association="Self.FK__Product__Categor__182C9B23">
+          <AssociationSet Name="FK__Product__Categor__3E52440B" Association="Self.FK__Product__Categor__3E52440B">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reviews__Product__45F365D3" Association="Self.FK__Reviews__Product__45F365D3">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Reviews" EntitySet="Reviews" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -113,6 +140,11 @@
             <End Role="Product" EntitySet="Products" />
             <End Role="Image" EntitySet="Images" />
           </AssociationSet>
+          <EntitySet Name="Reviews" EntityType="MobileCanModel.Review" />
+          <AssociationSet Name="FK__Reviews__Product__45F365D3" Association="MobileCanModel.FK__Reviews__Product__45F365D3">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Review" EntitySet="Reviews" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Category">
           <Key>
@@ -141,6 +173,8 @@
           <NavigationProperty Name="Category" Relationship="MobileCanModel.FK__Product__Categor__182C9B23" FromRole="Product" ToRole="Category" />
           <Property Name="Rating" Type="Double" />
           <NavigationProperty Name="Images" Relationship="MobileCanModel.FK__Image__ProductId__1CF15040" FromRole="Product" ToRole="Image" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Reviews" Relationship="MobileCanModel.FK__Reviews__Product__45F365D3" FromRole="Product" ToRole="Review" />
         </EntityType>
         <Association Name="FK__Product__Categor__182C9B23">
           <End Type="MobileCanModel.Category" Role="Category" Multiplicity="1" />
@@ -171,6 +205,28 @@
               <PropertyRef Name="ProductId" />
             </Principal>
             <Dependent Role="Image">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Review">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="UserName" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Review1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="MobileCanModel.FK__Reviews__Product__45F365D3" FromRole="Review" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK__Reviews__Product__45F365D3">
+          <End Type="MobileCanModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="MobileCanModel.Review" Role="Review" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Review">
               <PropertyRef Name="ProductId" />
             </Dependent>
           </ReferentialConstraint>
@@ -207,6 +263,7 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="MobileCanModel.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Rating" ColumnName="Rating" />
                 <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
                 <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
@@ -224,6 +281,16 @@
               <MappingFragment StoreEntitySet="Image">
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reviews">
+            <EntityTypeMapping TypeName="MobileCanModel.Review">
+              <MappingFragment StoreEntitySet="Reviews">
+                <ScalarProperty Name="Review1" ColumnName="Review" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

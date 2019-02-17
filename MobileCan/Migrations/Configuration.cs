@@ -33,6 +33,16 @@ namespace MobileCan.Migrations
                 userManager.Create(roba, password: "changeme");
                 userManager.AddToRole(roba.Id, "Admin");
             }
+            var ammar = new ApplicationUser() { UserName = "Ammar", Email = "Ammar@mobilecan.online" };
+            if (!context.Users.Any(i => i.UserName == ammar.UserName))
+            {
+                userManager.Create(ammar, password: "changeme");               
+            }
+            var lina = new ApplicationUser() { UserName = "lina", Email = "lina@mobilecan.online" };
+            if (!context.Users.Any(i => i.UserName == lina.UserName))
+            {
+                userManager.Create(lina, password: "changeme");
+            }
             //
         }
     }

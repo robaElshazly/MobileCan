@@ -1,0 +1,74 @@
+﻿@model MobileCan.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+@section Scripts
+{
+    <script type="text/javascript">
+    /* wait for images to load */
+    $(window).load( function() {
+        $('.sp-wrap').smoothproducts();
+    });
+    </script>
+}
+
+
+<h2>@Model.Name </h2>
+<div>
+    
+   
+    <hr />
+    <div class="sp-wrap">
+     @foreach (var image in Model.Images)
+     {<a href=@image><img src=@image alt=""></a>
+    
+     }       
+
+    </div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Reviews)
+        </dt>
+        @foreach (var rev in Model.Reviews)
+        {<dt>@rev.UserName</dt> 
+         <dd>@rev.Review1</dd>}
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index","Home")
+</p>

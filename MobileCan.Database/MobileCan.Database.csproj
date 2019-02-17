@@ -74,7 +74,13 @@
     <EmbeddedResource Include="scripts\201901301138-create-product.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="scripts\201903020404-create-image.sql" />
+    <EmbeddedResource Include="scripts\201902030404-create-image.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="scripts\201902101754-update-description.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="scripts\201902101931-create-reviews.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

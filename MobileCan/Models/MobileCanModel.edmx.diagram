@@ -11,6 +11,8 @@
         <AssociationConnector Association="MobileCanModel.FK__Product__Categor__182C9B23" />
         <EntityTypeShape EntityType="MobileCanModel.Image" Width="1.5" PointX="8.125" PointY="2" />
         <AssociationConnector Association="MobileCanModel.FK__Image__ProductId__1CF15040" />
+        <EntityTypeShape EntityType="MobileCanModel.Review" Width="1.5" PointX="8.125" PointY="5.125" />
+        <AssociationConnector Association="MobileCanModel.FK__Reviews__Product__45F365D3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -29,5 +29,6 @@ namespace MobileCan.Models
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Image> Images { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
     }
 }

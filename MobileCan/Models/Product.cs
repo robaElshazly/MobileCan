@@ -18,6 +18,7 @@ namespace MobileCan.Models
         public Product()
         {
             this.Images = new HashSet<Image>();
+            this.Reviews = new HashSet<Review>();
         }
     
         public int ProductId { get; set; }
@@ -29,9 +30,12 @@ namespace MobileCan.Models
         public string ModifiedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
         public Nullable<double> Rating { get; set; }
+        public string Description { get; set; }
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Image> Images { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }
