@@ -22,7 +22,8 @@
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item active">@Html.ActionLink("Home", "Index", "Home",null, new{@class = "nav-link"})</li>
                     <li class="nav-item">@Html.ActionLink("About", "About", "Home", null, new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Secured Contact", "Contact", "Home", null, new { @class = "nav-link" })</li>
+                    @if (User.IsInRole("Admin"))
+                    {<li class="nav-item">@Html.ActionLink("Admin", "Index", "Admin", new { area = "Admin" }, new { @class = "nav-link" })</li>}
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
