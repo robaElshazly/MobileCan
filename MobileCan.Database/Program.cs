@@ -1,10 +1,7 @@
 ﻿using DbUp;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MobileCan.Database
 {
@@ -16,9 +13,7 @@ namespace MobileCan.Database
         args.FirstOrDefault()
         ?? "Server=(localdb)\\mssqllocaldb; Database=MobileCanDb; Trusted_connection=true";
 
-            var isAzure = args.Any(i => i.Contains("database.windows.net"));
-
-            EnsureDatabase.For.SqlDatabase(connectionString, isAzure ? DbUp.SqlServer.AzureDatabaseEdition.Standard : DbUp.SqlServer.AzureDatabaseEdition.None);
+            EnsureDatabase.For.SqlDatabase(connectionString);
 
             var upgrader =
                 DeployChanges.To
