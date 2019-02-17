@@ -667,9 +667,6 @@
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="ApplicationInsights.config">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <EntityDeploy Include="Models\MobileCanModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MobileCanModel.Designer.cs</LastGenOutput>

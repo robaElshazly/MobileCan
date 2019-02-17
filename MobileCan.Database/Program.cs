@@ -13,7 +13,7 @@ namespace MobileCan.Database
         args.FirstOrDefault()
         ?? "Server=(localdb)\\mssqllocaldb; Database=MobileCanDb; Trusted_connection=true";
 
-            EnsureDatabase.For.SqlDatabase(connectionString,0);
+            EnsureDatabase.For.SqlDatabase(connectionString, 0);
 
             var upgrader =
                 DeployChanges.To
