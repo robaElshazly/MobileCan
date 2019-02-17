@@ -30,6 +30,37 @@ namespace MobileCan
                       "~/Content/bootstrap.css",
                       "~/Content/shop-homepage.css",
                       "~/Content/smoothproducts.css"));
+
+            bundles.Add(new StyleBundle("~/Admin/vendor/css").Include(
+                "~/areas/admin/assets/vendor/bootstrap/css/bootstrap.min.css",
+                "~/areas/admin/assets/vendor/fonts/circular-std/style.css",
+                "~/areas/admin/assets/vendor/fonts/fontawesome/css/fontawesome-all.css",
+                "~/areas/admin/assets/vendor/charts/chartist-bundle/chartist.css",
+                "~/areas/admin/assets/vendor/charts/morris-bundle/morris.css",
+                "~/areas/admin/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css",
+                "~/areas/admin/assets/vendor/charts/c3charts/c3.css",
+                "~/areas/admin/assets/vendor/fonts/flag-icon-css/flag-icon.min.css"));
+
+            bundles.Add(new StyleBundle("~/Admin/libs/css").Include(
+                "~/areas/admin/assets/libs/css/style.css"));
+
+            bundles.Add(new ScriptBundle("~/Admin/vendor/js").Include(
+                "~/areas/admin/assets/vendor/jquery/jquery-3.3.1.min.js",
+                "~/areas/admin/assets/vendor/bootstrap/js/bootstrap.bundle.js",
+                "~/areas/admin/assets/vendor/slimscroll/jquery.slimscroll.js",
+                "~/areas/admin/assets/vendor/charts/chartist-bundle/chartist.min.js",
+                "~/areas/admin/assets/vendor/charts/sparkline/jquery.sparkline.js",
+                "~/areas/admin/assets/vendor/charts/morris-bundle/raphael.min.js",
+                "~/areas/admin/assets/vendor/charts/morris-bundle/morris.js",
+                "~/areas/admin/assets/vendor/charts/c3charts/c3.min.js",
+                "~/areas/admin/assets/vendor/charts/c3charts/d3-5.4.0.min.js",
+                "~/areas/admin/assets/vendor/charts/c3charts/C3chartjs.js"));
+
+            bundles.Add(new ScriptBundle("~/Admin/libs/js").Include(
+                "~/areas/admin/assets/libs/js/main-js.js",
+                "~/areas/admin/assets/libs/js/dashboard-ecommerce.js"));
+
+
         }
     }
 }
