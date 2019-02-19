@@ -37,9 +37,14 @@ namespace MobileCan
                 "~/areas/admin/assets/vendor/fonts/fontawesome/css/fontawesome-all.css",
                 "~/areas/admin/assets/vendor/charts/chartist-bundle/chartist.css",
                 "~/areas/admin/assets/vendor/charts/morris-bundle/morris.css",
-                "~/areas/admin/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css",
-                "~/areas/admin/assets/vendor/charts/c3charts/c3.css",
-                "~/areas/admin/assets/vendor/fonts/flag-icon-css/flag-icon.min.css"));
+                "~/areas/admin/assets/vendor/charts/c3charts/c3.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/areas/admin/assets/vendor/fonts/flag-icon-css")
+                .Include("~/areas/admin/assets/vendor/fonts/flag-icon-css/flag-icon.min.css"));
+
+            bundles.Add(new StyleBundle("~/areas/admin/assets/vendor/fonts/material-design-iconic-font/css")
+                .Include("~/areas/admin/assets/vendor/fonts/material-design-iconic-font/css/materialdesignicons.min.css"));
 
             bundles.Add(new StyleBundle("~/Admin/libs/css").Include(
                 "~/areas/admin/assets/libs/css/style.css"));

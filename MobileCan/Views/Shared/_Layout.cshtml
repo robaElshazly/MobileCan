@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta lang="en-au" />
     <title>MobileCan - Buy Mobiles,Tablets And More</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    @Styles.RenderFormat("<link href='{0}' rel='stylesheet' async>", "~/Content/css")
+    @Styles.RenderFormat("<link href='{0}' rel='stylesheet' async>", "~/bundles/modernizr")
 </head>
 <body>
     <div class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -41,9 +42,9 @@
         </footer>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/vendor")
+    @Scripts.RenderFormat("<script src='{0}' async></script>", "~/bundles/jquery")
+    @Scripts.RenderFormat("<script src='{0}' async></script>", "~/bundles/bootstrap")
+    @Scripts.RenderFormat("<script src='{0}' async></script>", "~/bundles/vendor")
     @RenderSection("scripts", required: false)
 </body>
 
