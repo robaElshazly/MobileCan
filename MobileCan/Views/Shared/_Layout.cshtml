@@ -42,9 +42,9 @@
         </footer>
     </div>
 
-    @Scripts.RenderFormat("<script src='{0}' async></script>", "~/bundles/jquery")
-    @Scripts.RenderFormat("<script src='{0}' async></script>", "~/bundles/bootstrap")
-    @Scripts.RenderFormat("<script src='{0}' async></script>", "~/bundles/vendor")
+    @Scripts.RenderFormat("~/bundles/jquery")
+    @Scripts.RenderFormat("~/bundles/bootstrap")
+    @Scripts.RenderFormat("~/bundles/vendor")
     @RenderSection("scripts", required: false)
 </body>
 
