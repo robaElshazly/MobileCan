@@ -33,14 +33,12 @@ namespace MobileCan
 
             bundles.Add(new StyleBundle("~/Admin/vendor/css").Include(
                 "~/areas/admin/assets/vendor/bootstrap/css/bootstrap.min.css",
-                "~/areas/admin/assets/vendor/fonts/circular-std/style.css",
-                "~/areas/admin/assets/vendor/fonts/fontawesome/css/fontawesome-all.css",
                 "~/areas/admin/assets/vendor/charts/chartist-bundle/chartist.css",
                 "~/areas/admin/assets/vendor/charts/morris-bundle/morris.css",
                 "~/areas/admin/assets/vendor/charts/c3charts/c3.css"
                 ));
 
-            bundles.Add(new StyleBundle("~/Admin/libs/css").Include(
+            bundles.Add(new StyleBundle("~/Areas/Admin/assets/libs/css/style").Include(
                 "~/areas/admin/assets/libs/css/style.css"));
 
             bundles.Add(new ScriptBundle("~/Admin/vendor/js").Include(
